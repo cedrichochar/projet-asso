@@ -1,0 +1,30 @@
+{# src/MC/EventBundle/Resources/views/Advert/list.html.twig #}
+
+{% extends "MCEventBundle::layout.html.twig" %}
+
+{% block title %}
+  Résultats de recherche d'événement(s) - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <h2>Résultats de recherche avancée d'événement(s)</h2>
+
+  <ul>
+    {% for evenement in listEvenements %}
+    <li>
+      <a href="{{ path('mc_event_view', {'id': evenement.id}) }}">
+        {{ evenement.nomEvenement }}
+      </a><br />
+	   Organisé par {{ evenement.nomOrganisateur }}, le {{ evenement.debut|date('d/m/Y') }} à {{ evenement.debut|date('H:i:s') }}
+    </li><br />
+  {% else %}
+
+  <p>Aucun résultat ne correspond aux critères de votre recherche.</p>
+
+  {% endfor %}
+    <a href="{{ path('mc_event_search') }}">Lancer une nouvelle recherche avancée d'événement(s)</a><br />
+    <a href="{{ path('mc_event_homepage') }}">Voir le calendrier d'événements</a>
+  </ul>
+
+{% endblock %}

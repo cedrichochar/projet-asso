@@ -1,0 +1,39 @@
+<form action="{{ path('search_evenement') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_errors(form) }}
+    {{ form_rest(form) }}
+    <input type="submit" />
+</form>
+
+{% if evenements.count > 0 %}
+    <h1>Search result</h1>
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Nom de l'évènement</th>
+                <th>Organisateur(s)</th>
+                <th>Date de début</th>
+                <th>Descriptif</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evenement in posts %}
+            <tr>
+                <td><a href="{{ path('mc1_event1_view', { 'id': evenement.id }) }}">{{ evenement.nomEvenement }}</a></td>
+                <td>{{ evenement.nomOrganisateur }}</td>
+                <td>{{ evenement.dateDebut }}</td>
+                <td>{{ evenement.descriptif }}</td>
+                <td>
+                    <ul>
+                        <li>
+                        <a href="{{ path('mc1_event1_view', { 'id': evenement.id }) }}">Voir l'évènement</a>
+                        </li>
+                        <li>
+                        <a href="{{ path('mc1_event1_edit', { 'id': evenement.id }) }}">Modifier l'évènement</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}

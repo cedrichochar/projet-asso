@@ -1,0 +1,96 @@
+mc_event_mycampus_event:
+    resource: "@MCEventBundle/Resources/config/routing/evenement.yml"
+    prefix:   /event
+
+# src/OC/PlatformBundle/Resources/config/routing.yml
+mc_event_homepage:
+    path:      /
+    defaults:  { _controller: MCEventBundle:Advert:index, page: 1 }
+
+mc_event_home:
+    path:      /{page}
+    defaults:  { _controller: MCEventBundle:Advert:index, page: 1 }
+    requirements:
+        page: \d*
+
+mc_event_view:
+    path:      /advert/{id}
+    defaults:  { _controller: MCEventBundle:Advert:view }
+    requirements:
+        id: \d+
+
+mc_event_add:
+    path:      /add
+    defaults:  { _controller: MCEventBundle:Advert:add }
+
+mc_event_edit:
+    path:      /edit/{id}
+    defaults:  { _controller: MCEventBundle:Advert:edit }
+    requirements:
+        id: \d+
+
+mc_event_delete:
+    path:      /delete/{id}
+    defaults:  { _controller: MCEventBundle:Advert:delete }
+    requirements:
+        id: \d+
+
+mc_event_myev:
+    path:       /myev
+    defaults:   { _controller: MCEventBundle:Advert:myev, page: 1 }
+    requirements:
+        page: \d*
+
+mc_event_list:
+    path:       /list
+    defaults:   { _controller: MCEventBundle:Advert:list, listEvenements: null }
+
+mc_event_search:
+    path:       /search
+    defaults:   { _controller: MCEventBundle:Advert:search }
+
+mc_ca_home:
+    path:       /ca/{page}
+    defaults:   { _controller: MCEventBundle:CA:index, page: 1 }
+    requirements:
+        page: \d*
+
+mc_ca_view:
+    path:       /ca/ca/{id}
+    defaults:   { _controller: MCEventBundle:CA:view }
+    requirements:
+        id: \d+
+
+mc_ca_add:
+    path:       /ca/add
+    defaults:   { _controller: MCEventBundle:CA:add }
+
+mc_ca_edit:
+    path:       /ca/edit/{id}
+    defaults:   { _controller: MCEventBundle:CA:edit }
+    requirements:
+        id: \d+
+
+mc_ca_delete:
+    path:       /ca/delete/{id}
+    defaults:   { _controller: MCEventBundle:CA:delete }
+    requirements:
+        id: \d+
+
+mc_ca_myca:
+    path:       /ca/myca
+    defaults:   { _controller: MCEventBundle:CA:myca, page: 1 }
+    requirements:
+        page: \d*
+
+mc_ca_abonner:
+    path:       /ca/abonner/{id}
+    defaults:   { _controller: MCEventBundle:CA:abonner }
+    requirements:
+        id: \d+
+
+mc_ca_desabonner:
+    path:       /ca/desabonner/{id}
+    defaults:   { _controller: MCEventBundle:CA:desabonner }
+    requirements:
+        id: \d+

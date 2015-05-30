@@ -1,0 +1,32 @@
+
+# app/config/fos_elastica.yml
+
+fos_elastica:
+    clients:
+        default: { host: %elastic_host%, port: %elastic_port% }
+    indexes:
+        mc_event:
+            client: default
+            types:
+                evenement:
+                    mappings:
+                        debut :
+                            type : datetime
+                        nomOrganisateur : ~
+                        nomEvenement : ~
+                    persistence:
+                        driver: orm
+                        model: MC\EventBundle\Entity\Evenement
+                        finder: ~
+                        provider: ~
+                        listener: ~
+
+                ca:
+                    mappings:
+                        nomCa: ~
+                    persistence:
+                        driver: orm
+                        model: MC\EventBundle\Entity\CA
+                        finder: ~
+                        provider: ~
+                        listener: ~

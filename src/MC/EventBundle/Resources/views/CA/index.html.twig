@@ -1,0 +1,43 @@
+{# src/MC/EventBundle/Resources/views/CA/index.html.twig #}
+
+{% extends "MCEventBundle::layout.html.twig" %}
+
+{% block title %}
+  Clubs & Associations - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <h2>Liste des clubs et associations</h2>
+  
+  {% if is_granted('ROLE_ADMIN') %}
+  <h3><a href="{{ path('mc_ca_add') }}">Ajouter un club ou une association</a></h3>
+  {% endif %}
+ 
+  <h5>(Pour l'instant affichés à la suite on verra plus tard l'affichage final.)</h5>
+
+  <ul>
+    {% for ca in listCA %}
+    </li>
+      <strong><a href="{{ path('mc_ca_view', {'id': ca.id}) }}">
+        {{ ca.nomCA }}
+      </a></strong>
+
+      {% if ca.getContact() is not empty %}<br />
+        <strong>Contacts:</strong> 
+        {% for contact in ca.getContact() %} 
+          {{ contact.prenomContact }} {{ contact.nomContact }} : {{ contact.numeroTelephoneContact }} ou {{ contact.adresseMailContact }}<br /> 
+        {% endfor %}
+      {% endif %}
+
+      <br /><br />
+
+    </li>
+  {% endfor %}
+  </ul>
+
+  {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+  <h4><a href="{{ path('mc_ca_myca') }}">Consulter mes Clubs&Assos</a></h4>
+  {% endif %}
+
+{% endblock %}

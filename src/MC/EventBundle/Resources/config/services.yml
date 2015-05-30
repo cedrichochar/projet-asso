@@ -1,0 +1,9 @@
+services:
+#    mc_event.example:
+#        class: MC\EventBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+      mc.form.evenement_search:
+            class: MC\EventBundle\Form\EvenementSearchType
+            tags: 
+                - { name: form.type, alias: evenement_search_type}

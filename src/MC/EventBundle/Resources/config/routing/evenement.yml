@@ -1,0 +1,30 @@
+mycampus_event:
+    path:     /
+    defaults: { _controller: "MCEventBundle:Evenement:index" }
+
+mycampus_event_show:
+    path:     /{id}/show
+    defaults: { _controller: "MCEventBundle:Evenement:show" }
+
+mycampus_event_new:
+    path:     /new
+    defaults: { _controller: "MCEventBundle:Evenement:new" }
+
+mycampus_event_create:
+    path:     /create
+    defaults: { _controller: "MCEventBundle:Evenement:create" }
+    methods:  POST
+
+mycampus_event_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MCEventBundle:Evenement:edit" }
+
+mycampus_event_update:
+    path:     /{id}/update
+    defaults: { _controller: "MCEventBundle:Evenement:update" }
+    methods:  [POST, PUT]
+
+mycampus_event_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MCEventBundle:Evenement:delete" }
+    methods:  [POST, DELETE]

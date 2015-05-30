@@ -1,0 +1,14 @@
+{# src/MC/EventBundle/Resources/views/layout.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block menu %}
+  <ul class="nav nav-pills nav-stacked">
+		  {% if is_granted('ROLE_ORGANISATEUR') %}
+          <li><h3><a href="{{ path('mc_event_add') }}">Ajouter un événement</a><h3></li>
+		  {% endif %}
+		  <li><h3>Coming soon :</h3>
+			{{ render(controller("MCEventBundle:Advert:menu", {'limit': 3})) }}
+		  </li>
+        </ul>
+{% endblock %}

@@ -1,0 +1,38 @@
+  {# src/MC/EventBundle/Resources/views/Advert/view.html.twig #}
+
+  {% extends "MCEventBundle::layout.html.twig" %}
+
+  {% block title %}
+  Evénement - {{ parent() }}
+  {% endblock %}
+
+  {% block body %}
+
+  <h2>{{ evenement.nomEvenement }}</h2>
+  <i><strong>Organisé par :</strong> {{ evenement.nomOrganisateur }}</i><br />
+  <i>Le {{ evenement.debut|date('d/m/Y') }} à {{ evenement.debut|date('H:i:s') }}.</i>
+
+  <div class="well">
+    <strong>Descriptif :</strong> {{ evenement.descriptif }}
+  </div>
+
+  <p>
+    <a href="{{ path('mc_event_home') }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour au calendrier
+    </a>
+    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_ORGANISATEUR') %}
+    <a href="{{ path('mc_event_edit', {'id': evenement.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-edit"></i>
+      Modifier l'événement
+    </a>
+    <a href="{{ path('mc_event_delete', {'id': evenement.id}) }}" class="btn btn-danger">
+      <i class="glyphicon glyphicon-trash"></i>
+      Supprimer l'événement
+    </a>
+    {% endif %}
+  </p>
+
+  <hr>
+
+  {% endblock %}

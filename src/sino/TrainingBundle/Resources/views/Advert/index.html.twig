@@ -1,0 +1,25 @@
+{# src/sino/TrainingBundle/Resources/views/Advert/index.html.twig #}
+
+<html>
+	<title>
+		Bienvenue sur ma première page fils de {{ nom }} !
+	</title>
+
+    <body>
+        <h1>Hello World !</h1>
+        
+        <p>
+            Tu as {{ age }} ans, je suis {{ prenom }} !
+		</p>
+		<p>
+			Avec le controller : 
+			L'URL de l'annonce d'id 7 est : {{url}}
+		</p>
+		<p>
+			Avec la vue TWIG :
+			<a href="{{ path('sino_training_view', { 'id': 5 }) }}">
+			Lien vers l'annonce d'id {{ 5 }}
+			</a>	
+        </p>
+    </body>
+</html>

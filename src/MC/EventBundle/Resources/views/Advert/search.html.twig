@@ -1,0 +1,78 @@
+{# src/MC/EventBundle/Resources/views/Advert/search.html.twig #}
+
+{% extends "MCEventBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - Recherche avancée d'événement(s) {% endblock %}
+
+{% block body %}
+
+<h2>Recherche avancée d'événement(s)</h2>
+
+<div class="well">
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+      {# Génération du label. #}
+      {{ form_label(form.nomEvenement, "Nom de l'événement", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.nomEvenement) }}
+
+      <div class="col-sm-4">
+        {# Génération de l'input. #}
+        {{ form_widget(form.nomEvenement, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    {# Idem pour les autres champs. #}
+
+    <div class="form-group">
+      {{ form_label(form.nomOrganisateur, "Nom de l'organisateur", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.nomOrganisateur) }}
+
+      <div class="col-sm-4">
+        {{ form_widget(form.nomOrganisateur, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      {{ form_label(form.dateFrom, "Evénement débutant au moins le :", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.dateFrom) }}
+
+      <div class="col-sm-4">
+        {{ form_widget(form.dateFrom, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      {{ form_label(form.dateTo, "Evénement débutant au plus tard le :", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.dateTo) }}
+
+      <div class="col-sm-4">
+        {{ form_widget(form.dateTo, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+
+  {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+  {{ form_widget(form.Rechercher, {'attr': {'class': 'btn btn-primary'} } ) }}
+
+  {#, 'href': path('mc_event_list',
+                                                                          {'dateFrom': form.vars.value.dateFrom},
+                                                                          {'dateTo': form.vars.value.dateTo},
+                                                                          {'nomEvenement': form.vars.value.nomEvenement},
+                                                                          {'nomOrganisateur': form.vars.value.nomOrganisateur} ) #}
+
+  {# Génération automatique des champs pas encore écrits.
+     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+     et tous les champs cachés (type « hidden »). #}
+  {{ form_rest(form) }}
+  
+  {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(form) }}
+</div>
+
+{% endblock %}

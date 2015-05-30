@@ -1,0 +1,66 @@
+  {# src/MC/EventBundle/Resources/views/CA/view.html.twig #}
+
+  {% extends "MCEventBundle::layout.html.twig" %}
+
+  {% block title %}
+  Club/Asso - {{ parent() }}
+  {% endblock %}
+
+  {% block body %}
+
+  <h2>{{ ca.nomCA }}</h2>
+  {% if ca.getContact() is not empty %}
+  <ul><strong>Nous contacter : </strong>
+    {% for contact in ca.getContact() %}<li>{{ contact.prenomContact }} {{ contact.nomContact }} : {{ contact.numeroTelephoneContact }} ou <a href="mailto:{{ contact.adresseMailContact }}">{{ contact.adresseMailContact }}</a></li> {% endfor %} 
+  </ul>
+  {% endif %}
+
+  <div class="well">
+    <p><strong>Descriptif : </strong>{{ ca.descriptifCA }}</p>
+    {% if ca.getEvenements() is not empty %}
+    <p><strong>Evénements : </strong><ul>
+      {% for evenement in ca.getEvenements() %}
+      <li><a href="{{ path('mc_event_view', {'id': evenement.id}) }}">{{ evenement.nomEvenement }} :</a><br />
+        Le {{ evenement.debut|date('d/m/Y') }} à {{ evenement.debut|date('H:i:s') }}</li>
+      {% endfor %}</ul></p>
+    {% endif %}
+      </div>
+
+      {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <p>
+          {% if ca not in app.user.getCas() %}
+          Vous n'êtes pas abonné(e) à ce Club/Asso.<br />
+          <a href="{{ path('mc_ca_abonner', {'id': ca.id}) }}" class="btn btn-debault">
+            S'abonner
+          </a>
+          {% else %}
+          Vous êtes abonné(e) à ce Club/Asso.<br />
+          <a href="{{ path('mc_ca_desabonner', {'id': ca.id}) }}" class="btn btn-debault">
+            Se désabonner
+          </a>
+          {% endif %}
+        </p>
+      {% endif %}
+
+      <p>
+        <a href="{{ path('mc_ca_home') }}" class="btn btn-default">
+          <i class="glyphicon glyphicon-chevron-left"></i>
+          Retour aux Clubs & Associations
+        </a>
+
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_ORGANISATEUR') %}
+        <a href="{{ path('mc_ca_edit', {'id': ca.id}) }}" class="btn btn-default">
+          <i class="glyphicon glyphicon-edit"></i>
+          Modifier le Club/Asso
+        </a>
+        <a href="{{ path('mc_ca_delete', {'id': ca.id}) }}" class="btn btn-danger">
+          <i class="glyphicon glyphicon-trash"></i>
+          Supprimer le Club/Asso
+        </a>
+        {% endif %}
+
+      </p>
+
+      <hr>
+
+  {% endblock %}

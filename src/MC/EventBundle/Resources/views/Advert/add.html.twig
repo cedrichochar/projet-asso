@@ -1,0 +1,19 @@
+{# src/MC/EventBundle/Resources/views/Advert/add.html.twig #}
+
+{% extends "MCEventBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - Ajouter {% endblock %}
+
+{% block body %}
+
+  <h2>Ajouter un événement</h2>
+  <h3>Formulaire de création d'un événenement</h3>
+  
+  {{ include("MCEventBundle:Advert:form.html.twig") }}
+
+  <p>
+    Attention : cette annonce sera ajoutée directement
+    sur la page d'accueil après validation du formulaire.
+  </p>
+
+{% endblock %}

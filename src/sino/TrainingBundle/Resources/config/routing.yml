@@ -1,0 +1,19 @@
+# src/sino/TrainingBundle/Resources/config/routing.yml
+
+sino_training_home:
+    path:      /
+    defaults:  { _controller: sinoTrainingBundle:Advert:index }
+    
+sino_training_view:
+    path:      /advert/{id}
+    defaults:  { _controller: sinoTrainingBundle:Advert:view }
+    
+sino_training_view_slug:
+    path:      /{year}/{slug}.{format}
+    defaults:  { _controller: sinoTrainingBundle:Advert:viewSlug, format: html }
+    requirements:
+        year:   \d{4}
+        format: html|xml
+sino_training_add:
+    path:      /add
+    defaults:  { _controller: sinoTrainingBundle:Advert:add }

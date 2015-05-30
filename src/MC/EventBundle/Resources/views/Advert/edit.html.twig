@@ -1,0 +1,25 @@
+{# src/MC/EventBundle/Resources/views/Advert/add.html.twig #}
+
+{% extends "MCEventBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - Modifier {% endblock %}
+
+{% block body %}
+
+  <h2>Modifier un évènement</h2>
+
+  {{ include("MCEventBundle:Advert:form.html.twig") }}
+
+    <p>
+    Vous modifiez un événement déjà existant, merci de ne pas changer
+    l'esprit général de l'événement déjà publié.
+  </p>
+
+  <p>
+    <a href="{{ path('mc_event_view', {'id': evenement.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à l'annonce
+    </a>
+  </p>
+
+{% endblock %}

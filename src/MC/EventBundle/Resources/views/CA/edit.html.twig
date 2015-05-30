@@ -1,0 +1,25 @@
+{# src/MC/EventBundle/Resources/views/CA/edit.html.twig #}
+
+{% extends "MCEventBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - Modifier {% endblock %}
+
+{% block body %}
+
+  <h2>Modifier le Club/Asso {{ ca.nomCA }}</h2>
+
+  {{ include("MCEventBundle:CA:form.html.twig") }}
+
+    <p>
+    Vous éditez un Club/Asso déjà existant, merci de ne pas changer son
+    esprit général.
+  </p>
+
+  <p>
+    <a href="{{ path('mc_ca_view', {'id': ca.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour au Club/Asso
+    </a>
+  </p>
+
+{% endblock %}

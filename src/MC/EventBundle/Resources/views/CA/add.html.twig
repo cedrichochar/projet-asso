@@ -1,0 +1,19 @@
+{# src/MC/EventBundle/Resources/views/CA/add.html.twig #}
+
+{% extends "MCEventBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - Ajouter {% endblock %}
+
+{% block body %}
+
+  <h2>Ajouter un club ou une association</h2>
+  <h3>Formulaire de création d'un club ou d'une association</h3>
+
+  {{ include("MCEventBundle:CA:form.html.twig") }}
+
+  <p>
+    Attention : ce club/asso sera ajouté directement
+    sur la page Clubs & Associations aprés validation du formulaire.
+  </p>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{# src/MC/EventBundle/Resources/views/CA/delete.html.twig #}
+
+{% extends "MCEventBundle::layout.html.twig" %}
+
+{% block title %}
+  Supprimer un Club/Asso - {{ parent() }}
+{% endblock %}
+
+{% block mcca_body %}
+
+  <h2>Supprimer le Club/Asso {{ ca.nomCA }}</h2>
+
+  <p>
+    Etes-vous certain de vouloir supprimer le Club/Asso "{{ ca.nomCA }}" ?
+  </p>
+
+  {# On met l'id de l'annonce dans la route de l'action du formulaire #}
+  <form action="{{ path('mc_ca_delete', {'id': ca.id}) }}" method="post">
+    <a href="{{ path('mc_ca_view', {'id': ca.id}) }}" class="btn btn-default">
+      <i class="glyphicon glyphicon-chevron-left"></i>
+      Retour à l'événement
+    </a>
+    {# Ici j'ai écrit le bouton de soumission à la main #}
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+    {# Ceci va générer le champ CSRF #}
+    {{ form_rest(form) }}
+  </form>
+
+{% endblock %}

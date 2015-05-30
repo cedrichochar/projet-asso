@@ -1,0 +1,17 @@
+{# src/MC/EventBundle/Resources/views/Advert/add.html.twig #}
+
+{% extends "MCEventBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - Ajouter {% endblock %}
+
+{% block body %}
+
+  <h2>Supprimer un événement</h2>
+
+  <p>
+    <a href="{{ path('mc_event_home') }}" class="btn btn-default">
+      Confirmer la suppression
+    </a>
+  </p>
+
+{% endblock %}
